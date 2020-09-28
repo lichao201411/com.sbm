@@ -52,6 +52,19 @@ public class RedisConfig extends CachingConfigurerSupport {
 	return cacheManager;
 	}
 
+	/***
+	 * 这个是springboot2的版本，上面是1
+	 * @param factory
+	 * @return
+	 */
+	/*@Bean
+	public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+				.entryTtl(Duration.ofHours(1)); // 设置缓存有效期一小时
+		return RedisCacheManager
+				.builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
+				.cacheDefaults(redisCacheConfiguration).build();
+	}*/
 	//1.项目启动时此方法先被注册成bean被spring管理
 	@Bean
 	public RedisTemplate<String, String> redisTemplate(
